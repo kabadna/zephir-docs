@@ -60,11 +60,7 @@ Zephirインストーラを実行します。（このコンパイルはパー�
 .. code-block:: bash
 
 	$ cd zephir
-	$ ./install-json
 	$ ./install -c
-
-もし既にjson-cがインストールされているなら、./install-json は省略しても
-構いません。
 
 インストール確認
 ----------------
