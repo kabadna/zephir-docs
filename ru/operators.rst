@@ -189,52 +189,53 @@ Fetch
 
 'Fetch' вернет true, если в массиве есть что-то по ключу 'key' и тогда в 'value' будет присвоенно значение.
 
-Type Hints
-^^^^^^^^^^
-Zephir always tries to check whether an object implements methods and properties called/accessed on a variable that is inferred to be an object:
+Подсказка Типа 
+^^^^^^^^^^^^^^
+Zephir всегда пытается проверить, реализует ли объект методы и свойства, вызываемые/доступные для переменной, которая выводится как объект:
 
 .. code-block:: zephir
 
     let o = new MyObject();
 
-    // Zephir checks if "myMethod" is implemented on MyObject
+    // Zephir проверяет, реализован ли «myMethod» в MyObject
     o->myMethod();
 
-However, due to the dynamism inherited from PHP, sometimes it is not easy to know the class of an object so Zephir can not produce errors reports effectively.
-A type hint tells the compiler which class is related to a dynamic variable allowing the compiler to perform more compilation checks:
+Однако из-за динамизма, унаследованного от PHP, иногда нелегко узнать класс объекта, 
+поэтому Zephir не может эффективно создавать отчеты об ошибках.
+Подсказка типа сообщает компилятору, какой класс связан с динамической переменной, позволяющей компилятору выполнять больше проверок компиляции:
 
 .. code-block:: zephir
 
-    // Tell the compiler that "o"
-    // is an instance of class MyClass
+    // Сообщает компилятору, что "o"
+    // является экземпляром класса MyClass
     let o = <MyClass> this->_myObject;
     o->myMethod();
 
-Branch Prediction Hints
-^^^^^^^^^^^^^^^^^^^^^^^
-What is branch prediction? Check this `article out`_. In environments where performance is very important, it may be useful to introduce these hints.
+Подсказки прогнозирования ветвлений
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Что такое прогнозирование ветвлений? Для подробного описания это понятия обратитесь к `статье Игоря Островского`_ или `описанию на Wikipedia`_. В окружениях, где производительность является очень важной составляющей, может оказаться полезным использование подсказок при прогнозировании ветвлений.
 
-Consider the following example:
+Рассмотрим следующий пример:
 
 .. code-block:: zephir
 
     let allPaths = [];
     for path in this->_paths {
         if path->isAllowed() == false {
-            throw new App\Exception("error!!");
+            throw new App\Exception("Some error message here");
         } else {
             let allPaths[] = path;
         }
     }
 
-The authors of the above code, know in advance that the condition that throws the exception is unlikely to happen. This means that 99.9% of the time, our method executes that condition, but it is probably never evaluated as true. For the processor, this could be hard to know, so we could introduce a hint there:
+Авторы кода, приведенного выше, заранее знают, что условие, которое выбрасывает исключение, вряд ли произойдет. Это означает, что в 99.9% случаев наш метод выполняет эту проверку в холостую – условие вероятно никогда не будет оцениваться как истинное. Но для процессора, обычно, это сложно понять, поэтому мы могли бы ввести здесь подсказку:
 
 .. code-block:: zephir
 
     let allPaths = [];
     for path in this->_paths {
         if unlikely path->isAllowed() == false {
-            throw new App\Exception("error!!");
+            throw new App\Exception("Some error message here");
         } else {
             let allPaths[] = path;
         }
@@ -242,4 +243,5 @@ The authors of the above code, know in advance that the condition that throws th
 
 .. _`array_key_exists`: http://www.php.net/manual/en/function.array-key-exists.php
 .. _`php документации`: http://www.php.net/manual/en/language.operators.comparison.php
-.. _`article out`: http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/
+.. _`статье Игоря Островского`: http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/
+.. _`описанию на Wikipedia`: https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D0%B4%D1%81%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D0%B5%D0%BB%D1%8C_%D0%BF%D0%B5%D1%80%D0%B5%D1%85%D0%BE%D0%B4%D0%BE%D0%B2

@@ -1,27 +1,27 @@
 欢迎!
 ========
-Welcome to Zephir, an open source, high-level/domain specific language
-designed to ease the creation and maintainability of extensions for PHP
-with a focus on type and memory safety.
 
-Some features
+欢迎使用Zephir, Zephir是一个开源的，类型与内存安全的高级语言。Zephir设计的设计目的是方便开发与维护
+PHP的扩展。
+
+一些特性
 -------------
-Zephir的主要特性:
+Zephir的主要特性
 
-+-------------------+-----------------------------------------------------+
-| Type system       | dynamic/static                                      |
-+-------------------+-----------------------------------------------------+
-| Memory safety     | pointers or direct memory management aren't allowed |
-+-------------------+-----------------------------------------------------+
-| Compilation model | ahead of time                                       |
-+-------------------+-----------------------------------------------------+
-| Memory model      | task-local garbage collection                       |
-+-------------------+-----------------------------------------------------+
++----------+--------------------------+
+| 类型系统 | 动态/静态                |
++----------+--------------------------+
+| 内存安全 | 无指针和不能进行内存管理 |
++----------+--------------------------+
+| 编译类型 | 提前编译                 |
++----------+--------------------------+
+| 内存模型 | 本地垃圾处理             |
++----------+--------------------------+
 
-A small taste
+小试一下
 -------------
-The following code registers a class with a method that filters variables returning its
-alphabetic characters:
+
+下面的代码实现了一个类Filter，这个类中的alpha方法接收一个string类型的参数然后返回字母表字符串：
 
 .. code-block:: zephir
 
@@ -33,8 +33,7 @@ alphabetic characters:
     class Filter
     {
         /**
-         * Filters a string returning its alpha characters
-         *
+         * 过滤字符串，返回字母表中的字母
          * @param string str
          */
         public function alpha(string str)
@@ -51,11 +50,11 @@ alphabetic characters:
         }
     }
 
-The class can be used from PHP as follows:
+这个类在PHP中这样用：
 
 .. code-block:: php
 
   <?php
 
   $filter = new MyLibrary\Filter();
-  echo $filter->alpha("01he#l.lo?/1"); // prints hello
+  echo $filter->alpha("01he#l.lo?/1"); // 打印输出 hello
