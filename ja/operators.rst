@@ -242,7 +242,7 @@ Zephir はオブジェクトと推測される変数にアクセスまたは呼�
 
 分岐予測のヒント
 ^^^^^^^^^^^^^^^^
-分岐予測とはなんでしょう？ `こちら`_ の記事をチェックしてください。
+分岐予測とはなんでしょう？ `こちら`_ の記事か `Wikipedia の記事`_ をチェックしてください。
 性能が非常に重要な環境では、これらのヒントの導入が役立つかもしれません。
 
 次の例を考えてみましょう。:
@@ -277,3 +277,4 @@ Zephir はオブジェクトと推測される変数にアクセスまたは呼�
 .. _`array_key_exists`: http://www.php.net/manual/ja/function.array-key-exists.php
 .. _`PHPのマニュアル`: http://www.php.net/manual/ja/language.operators.comparison.php
 .. _`こちら`: http://igoro.com/archive/fast-and-slow-if-statements-branch-prediction-in-modern-processors/
+.. _`Wikipedia の記事`: https://ja.wikipedia.org/wiki/%E5%88%86%E5%B2%90%E4%BA%88%E6%B8%AC
