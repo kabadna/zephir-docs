@@ -194,7 +194,7 @@ C# のように、Zephir では get/set/toString ショートカットを使う�
 
         public function setMyProperty(myProperty)
         {
-            this->myProperty = myProperty;
+            let this->myProperty = myProperty;
         }
 
         public function getMyProperty()
@@ -204,7 +204,7 @@ C# のように、Zephir では get/set/toString ショートカットを使う�
 
         public function setSomeProperty(someProperty)
         {
-            this->someProperty = someProperty;
+            let this->someProperty = someProperty;
         }
 
         public function getSomeProperty()
@@ -476,7 +476,7 @@ Zephir では、プログラムでプロパティにアクセスしていた場�
 
     CompilerException: Property '_optionsx' is not defined on class 'App\MyClass' in /Users/scott/utils/app/myclass.zep on line 62
 
-          this->_optionsx = options;
+          let this->_optionsx = options;
           ------------^
 
 もしあなたがコンパイラのチェックを回避したいか、プロパティを動的に作成したい場合は、
